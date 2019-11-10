@@ -1,31 +1,60 @@
 <template>
-  <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <router-link to="/foo">Go to Foo</router-link>
-    <router-link to="/bar">Go to Bar</router-link>
-    <router-view></router-view>
-  </div>
+  <v-app id="inspire">
+    <v-navigation-drawer v-model="drawer" app clipped>
+      <v-list>
+        <v-list-item link v-for="menu in menus" :key="menu.name" :to="menu.url">
+          <v-list-item-action>
+            <v-icon>{{menu.icon}}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{menu.name}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app clipped-left>
+      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
+      <v-avatar>
+        <img src="./assets/avatar.jpg" />
+      </v-avatar>
+      <v-toolbar-title>Van Tuan Tran</v-toolbar-title>
+    </v-app-bar>
+
+    <v-content>
+      <v-container class="fill-height" fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+
+    <v-footer app>
+      <span>hunter.tran &copy; 2019</span>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
-  name: "app",
-  components: {
-    // HelloWorld
+  props: {
+    source: String
+  },
+  data: () => ({
+    drawer: null,
+    menus: [
+      {
+        name: "cv",
+        url: "/cv",
+        icon: "mdi-file-document-box-multiple-outline"
+      },
+      {
+        name: "blog",
+        url: "blog",
+        icon: "mdi-web"
+      }
+    ]
+  }),
+  created() {
+    this.$vuetify.theme.dark = true;
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
