@@ -3,9 +3,11 @@
     <v-expansion-panel v-for="award in awards" :key="award.title">
       <v-expansion-panel-header>{{ award.title }}</v-expansion-panel-header>
       <v-expansion-panel-content>
-          <v-subheader>{{award.time}}</v-subheader>
+          <v-subheader>{{award.time}} - {{award.org}}</v-subheader>
+          <v-subheader>{{award.description}}</v-subheader>
       </v-expansion-panel-content>
     </v-expansion-panel>
+    <v-divider></v-divider>
   </v-expansion-panels>
 </template>
 
