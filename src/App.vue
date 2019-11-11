@@ -7,7 +7,7 @@
             <v-icon>{{menu.icon}}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>{{menu.name}}</v-list-item-title>
+            <v-list-item-title class="text-uppercase">{{menu.name}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
