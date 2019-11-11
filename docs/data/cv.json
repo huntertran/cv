@@ -1,0 +1,60 @@
+{
+    "name": "Van Tuan Tran",
+    "bio": "Studying master of Computer Science at Concordia University",
+    "experience": [
+        {
+            "title": "Senior Software Engineer",
+            "name": "NashTech Limited",
+            "from": "2018-07",
+            "to": "2019-04",
+            "location": "Etown Building, Ho Chi Minh City, Vietnam",
+            "description": "Create data visualization software for a Korean company, using WPF\nWorking on profile matching platform between industrial suppliers and buyers, using a combination of ASP.NET Core 2, Neo4J database and Angular 5 for client-side",
+            "avatar": "/logos/nashtech.png"
+        },
+        {
+            "title": "Software Engineer",
+            "name": "Nexcel Solutions",
+            "from": "2018-02",
+            "to": "2019-06",
+            "location": "Quang Trung Software Park, Ho Chi Minh City, Vietnam",
+            "description": "",
+            "avatar": "/logos/nexcel.png"
+        },
+        {
+            "title": "Software Engineer",
+            "name": "Zinio",
+            "from": "2014-11",
+            "to": "2017-01",
+            "location": "Flemington Building, Ho Chi Minh City, Vietnam",
+            "description": "Products:\nZinio Branded Apps for major magazines\nAutomatic Build System for Branded Apps\nZinio SDK for Windows\nZinio Newsstand App",
+            "avatar": "/logos/zinio.png"
+        },
+        {
+            "title": "Internship",
+            "name": "SHTP - Microsoft Innovation Center",
+            "from": "2013-04",
+            "to": "2014-08",
+            "location": "35 Nguyen Thong, District 3, HCMC | Saigon Hightech Park - District 9, HCMC",
+            "description": "Build apps for Nokia and Microsoft",
+            "avatar": "/logos/microsoft.png"
+        }
+    ],
+    "education": [
+        {
+            "name": "Master's degree, Computer Science",
+            "title": "Concordia University",
+            "from": "2019",
+            "to": "2022",
+            "location": "Montreal, Quebec, Canada",
+            "avatar": "/logos/microsoft.png"
+        },
+        {
+            "name": "Bachelor of Enginnering - BE, Information System, A",
+            "title": "University of Information Technology",
+            "from": "2010",
+            "to": "2015",
+            "location": "Ho Chi Minh City, Vietnam",
+            "avatar": "/logos/microsoft.png"
+        }
+    ]
+}
