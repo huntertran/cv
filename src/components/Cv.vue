@@ -7,7 +7,8 @@
             </v-col>
         </v-row>
         <Experience :data="cv.education" title="Education"></Experience>
-        <Experience :data="cv.experience" title="Experience"></Experience>        
+        <Experience :data="cv.experience" title="Experience"></Experience>
+        <Experience :data="cv.volunteer" title="Volunteer Experience"></Experience>
     </v-container>
 </template>
 

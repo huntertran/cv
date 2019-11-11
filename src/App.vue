@@ -47,6 +47,11 @@ export default {
         icon: "mdi-file-document-box-multiple-outline"
       },
       {
+        name:"awards",
+        url:"/awards",
+        icon: "mdi-seal-variant"
+      },
+      {
         name: "blog",
         url: "blog",
         icon: "mdi-web"

@@ -24,7 +24,7 @@
                                     <v-list-item-content class="line-break">{{company.description}}</v-list-item-content>
                                 </v-list-item-content>
 
-                                <v-list-item-avatar tile size="80" color="grey">
+                                <v-list-item-avatar v-if="company.avatar" tile size="80" color="grey">
                                     <v-img :src="company.avatar"></v-img>
                                 </v-list-item-avatar>
                             </v-list-item>
