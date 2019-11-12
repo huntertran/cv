@@ -5,6 +5,7 @@ import Blog from './components/Blog'
 import Award from './components/Award'
 import Cv from './components/Cv'
 import Researches from './components/Researches'
+import Projects from './components/Projects'
 
 Vue.use(VueRouter);
 
@@ -20,6 +21,10 @@ const routes = [
   {
     path:'/researches',
     component: Researches
+  },
+  {
+    path:'/projects',
+    component: Projects
   },
   {
     path: '/cv',
