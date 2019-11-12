@@ -1,15 +1,25 @@
 <template>
-  <v-expansion-panels accordion multiple v-model="True">
-    <v-expansion-panel v-for="award in awards" :key="award.title">
-      <v-expansion-panel-header>{{ award.title }}</v-expansion-panel-header>
-      <v-expansion-panel-content>
-          <v-subheader>{{award.time}} - {{award.org}}</v-subheader>
-          <v-subheader>{{award.description}}</v-subheader>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-    <v-divider></v-divider>
-  </v-expansion-panels>
+  <v-container fluid class="fill-height">
+    <v-row align-content="start" class="fill-height">
+      <v-expansion-panels accordion multiple v-model="True">
+        <v-expansion-panel v-for="award in awards" :key="award.title">
+          <v-expansion-panel-header>{{ award.time }} - {{ award.title }}</v-expansion-panel-header>
+          <v-expansion-panel-content>
+            <v-subheader>{{ award.org }}</v-subheader>
+            <v-subheader class="line-break">{{ award.description }}</v-subheader>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+        <v-divider></v-divider>
+      </v-expansion-panels>
+    </v-row>
+  </v-container>
 </template>
+
+<style lang="scss" scoped>
+.line-break {
+  white-space: pre-wrap;
+}
+</style>
 
 <script>
 import Axios from "axios";
