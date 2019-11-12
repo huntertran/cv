@@ -1,6 +1,7 @@
 {
     "projects": [
         "tlightbox",
-        "markdown-toc"
+        "markdown-toc",
+        "userscripts"
     ]
 }

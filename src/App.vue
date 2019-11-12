@@ -92,18 +92,28 @@ export default {
   },
   mounted: function() {
     this.getCount();
+    this.getProjectCount();
   },
   methods: {
     getCount: function() {
       var _this = this;
       Axios.get("/data/cv.json").then(function(response) {
         _this.cv = response.data;
-        /* eslint-disable no-console */
-        console.log(_this.cv);
-
         _this.menus.forEach(function(menu) {
           if (_this.cv[menu.name] !== undefined) {
             menu.count = _this.cv[menu.name].length;
+          }
+        });
+      });
+    },
+    getProjectCount: function() {
+      var _this = this;
+      Axios.get("/data/projects.json").then(function(response) {
+        // /* eslint-disable no-console */
+        // console.log(response.data.length);
+        _this.menus.forEach(function(menu) {
+          if (menu.name === "projects") {
+            menu.count = response.data.projects.length;
           }
         });
       });

@@ -4,7 +4,7 @@
       <v-card v-for="project in details" :key="project.id" class="ma-4 pa-4">
         <v-card-text>
           <div>Last updated: {{getDateOnly(project.updated_at)}}</div>
-          <div>{{project.license.name}}</div>
+          <div v-if="project.license">{{project.license.name}}</div>
           <p class="title text--primary">{{project.name}}</p>
 
           <div class="text--primary">{{project.description}}</div>
@@ -18,7 +18,12 @@
           </v-chip>
         </v-card-subtitle>
         <v-card-actions>
-          <v-btn color="green darken-4" :href="project.homepage" target="_blank">Home page</v-btn>
+          <v-btn
+            v-if="project.homepage"
+            color="green darken-4"
+            :href="project.homepage"
+            target="_blank"
+          >Home page</v-btn>
           <v-btn color="green darken-4" :href="project.clone_url" target="_blank">Source code</v-btn>
         </v-card-actions>
       </v-card>
