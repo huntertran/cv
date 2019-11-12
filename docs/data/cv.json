@@ -37,6 +37,15 @@
             "location": "35 Nguyen Thong, District 3, HCMC | Saigon Hightech Park - District 9, HCMC",
             "description": "Build apps for Nokia and Microsoft",
             "avatar": "./logos/microsoft.png"
+        },
+        {
+            "title": "Microsoft Student Partner",
+            "name": "Microsoft",
+            "from": "2010-08",
+            "to": "2016-06",
+            "location": "Ho Chi Minh City, Vietnam",
+            "description": "Microsoft Student Partner Lead at University of Information Technology\nTalent Management Lead\nChair of Information Technology Innovation Club",
+            "avatar": "./logos/microsoft.png"
         }
     ],
     "education": [
@@ -46,7 +55,7 @@
             "from": "2019",
             "to": "2022",
             "location": "Montreal, Quebec, Canada",
-            "avatar": "./logos/microsoft.png"
+            "avatar": "./logos/concordia.jpg"
         },
         {
             "name": "Bachelor of Enginnering - BE, Information System, A",
@@ -54,7 +63,53 @@
             "from": "2010",
             "to": "2015",
             "location": "Ho Chi Minh City, Vietnam",
-            "avatar": "./logos/microsoft.png"
+            "avatar": "./logos/uit.png"
+        }
+    ],
+    "volunteer": [
+        {
+            "name": "Teacher",
+            "title": "Smile Group",
+            "from": "2011-02",
+            "to": "2011-05",
+            "location": "Ho Chi Minh City, Vietnam",
+            "description": "Help poor kids and HIV Positive kids study major subjects at school\nProvide them a safe, fun and professional environment to play, study and be part of community."
+        }
+    ],
+    "awards": [
+        {
+            "title": "Microsoft Imagine Cup 2015 - National Winner",
+            "time": "Apr 2015",
+            "org": "Microsoft",
+            "description": "For World Citizenship\nNational Winner\nWorld Semifinal Competitors"
+        },
+        {
+            "title": "AmCham Scholarship 2014",
+            "time": "Dec 2014",
+            "org": "American Chamber of Commerce Vietnam",
+            "description": "Excellent Award"
+        },
+        {
+            "title": "Microsoft Student Partner of the Year",
+            "time": "May 2014",
+            "org": "Microsoft",
+            "description": "For continuous contribution to MSP Group and community"
+        }
+    ],
+    "researches": [
+        {
+            "title": "Generating World-clouds and find connections between Eclipse IoT Projects",
+            "abstract": "In the past few years, more and more open source IoT projects have been published by developers and enthusiasts. Eclipse environment provides some projects for supporting IoT development. The capability of one project and the relations among different projects are not clear enough for building an IoT application as a beginner of IoT development. We present those projects by generating word clouds and identify their relations by natural language processing techniques. (result) Some relations are verified by implementing some experiments;meanwhile. The accuracy of these word clouds and their relations are verified by the Eclipse Foundation.",
+            "authors": [
+                {
+                    "name": "Van Tuan Tran",
+                    "avatar": "./avatars/van tuan tran.jpg"
+                },
+                {
+                    "name": "Cheng Cheng"
+                }
+            ],
+            "org": "Concordia University"
         }
     ]
 }
