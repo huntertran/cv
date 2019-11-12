@@ -40,7 +40,7 @@
         },
         {
             "title": "Microsoft Student Partner",
-            "name": "SHTP - Microsoft Innovation Center",
+            "name": "Microsoft",
             "from": "2010-08",
             "to": "2016-06",
             "location": "Ho Chi Minh City, Vietnam",
@@ -94,6 +94,22 @@
             "time": "May 2014",
             "org": "Microsoft",
             "description": "For continuous contribution to MSP Group and community"
+        }
+    ],
+    "researches": [
+        {
+            "title": "Generating World-clouds and find connections between Eclipse IoT Projects",
+            "abstract": "In the past few years, more and more open source IoT projects have been published by developers and enthusiasts. Eclipse environment provides some projects for supporting IoT development. The capability of one project and the relations among different projects are not clear enough for building an IoT application as a beginner of IoT development. We present those projects by generating word clouds and identify their relations by natural language processing techniques. (result) Some relations are verified by implementing some experiments;meanwhile. The accuracy of these word clouds and their relations are verified by the Eclipse Foundation.",
+            "authors": [
+                {
+                    "name": "Van Tuan Tran",
+                    "avatar": "./avatars/van tuan tran.jpg"
+                },
+                {
+                    "name": "Cheng Cheng"
+                }
+            ],
+            "org": "Concordia University"
         }
     ]
 }

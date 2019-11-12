@@ -4,6 +4,7 @@ import Vue from 'vue'
 import Blog from './components/Blog'
 import Award from './components/Award'
 import Cv from './components/Cv'
+import Researches from './components/Researches'
 
 Vue.use(VueRouter);
 
@@ -17,7 +18,15 @@ const routes = [
     component: Award
   },
   {
+    path:'/researches',
+    component: Researches
+  },
+  {
     path: '/cv',
+    component: Cv
+  },
+  {
+    path: '/',
     component: Cv
   }
 ]

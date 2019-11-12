@@ -44,9 +44,3 @@ export default {
     }
 };
 </script>
-
-<style lang="scss" scoped>
-.line-break {
-    white-space: pre-wrap;
-}
-</style>

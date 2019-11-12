@@ -9,16 +9,21 @@
           <v-list-item-content>
             <v-list-item-title class="text-uppercase">{{menu.name}}</v-list-item-title>
           </v-list-item-content>
+          <v-list-item-avatar>
+            <v-chip v-if="menu.count > 0">{{menu.count}}</v-chip>
+          </v-list-item-avatar>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app clipped-left>
-      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
-      <v-avatar>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+      <v-toolbar-title>Van Tuan Tran</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-avatar right>
         <img src="./assets/avatar.jpg" />
       </v-avatar>
-      <v-toolbar-title>Van Tuan Tran</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
@@ -33,7 +38,15 @@
   </v-app>
 </template>
 
+<style lang="scss">
+.line-break {
+  white-space: pre-wrap;
+}
+</style>
+
 <script>
+import Axios from "axios";
+
 export default {
   props: {
     source: String
@@ -44,22 +57,57 @@ export default {
       {
         name: "cv",
         url: "/cv",
-        icon: "mdi-file-document-box-multiple-outline"
+        icon: "mdi-file-document-box-multiple-outline",
+        count: 0
       },
       {
-        name:"awards",
-        url:"/awards",
-        icon: "mdi-seal-variant"
+        name: "awards",
+        url: "/awards",
+        icon: "mdi-seal-variant",
+        count: 0
+      },
+      {
+        name: "researches",
+        url: "/researches",
+        icon: "mdi-school-outline",
+        count: 0
+      },
+      {
+        name: "projects",
+        url: "/projects",
+        icon: "mdi-briefcase-outline",
+        count: 0
       },
       {
         name: "blog",
         url: "blog",
-        icon: "mdi-web"
+        icon: "mdi-web",
+        count: 0
       }
-    ]
+    ],
+    cv: {}
   }),
   created() {
     this.$vuetify.theme.dark = true;
+  },
+  mounted: function() {
+    this.getCount();
+  },
+  methods: {
+    getCount: function() {
+      var _this = this;
+      Axios.get("/data/cv.json").then(function(response) {
+        _this.cv = response.data;
+        /* eslint-disable no-console */
+        console.log(_this.cv);
+
+        _this.menus.forEach(function(menu) {
+          if (_this.cv[menu.name] !== undefined) {
+            menu.count = _this.cv[menu.name].length;
+          }
+        });
+      });
+    }
   }
 };
 </script>
