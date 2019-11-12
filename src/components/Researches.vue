@@ -9,7 +9,7 @@
           <div class="text--primary">{{research.abstract}}</div>
         </v-card-text>
         <v-card-subtitle>
-          <v-chip v-for="author in research.authors" :key="author.name" pill>
+          <v-chip class="separated-chip" v-for="author in research.authors" :key="author.name" pill>
             <v-avatar v-if="author.avatar" left>
               <img :src="author.avatar" />
             </v-avatar>
@@ -25,6 +25,13 @@
     </v-row>
   </v-container>
 </template>
+
+<style lang="scss" scoped>
+.separated-chip {
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+</style>
 
 <script>
 import Axios from "axios";
