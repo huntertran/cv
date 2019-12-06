@@ -113,7 +113,9 @@ export default {
         // console.log(response.data.length);
         _this.menus.forEach(function(menu) {
           if (menu.name === "projects") {
-            menu.count = response.data.projects.length;
+            response.data.projects.forEach(function(item) {
+              menu.count += item.repos.length;
+            });
           }
         });
       });

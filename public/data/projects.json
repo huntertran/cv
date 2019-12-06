@@ -1,7 +1,30 @@
 {
     "projects": [
-        "tlightbox",
-        "markdown-toc",
-        "userscripts"
+        {
+            "type": "tools",
+            "count": 0,
+            "repos": [
+                "tlightbox",
+                "markdown-toc",
+                "userscripts"
+            ],
+            "details": []
+        },
+        {
+            "type": "courses",
+            "count": 0,
+            "repos": [
+                "soen6441-riskgame"
+            ],
+            "details": []
+        },
+        {
+            "type": "researches",
+            "count": 0,
+            "repos": [
+                "ptidej-wordcloud"
+            ],
+            "details": []
+        }
     ]
 }

@@ -1,32 +1,48 @@
 <template>
   <v-container fluid class="fill-height">
     <v-row class="fill-height" align="start" justify="start">
-      <v-card v-for="project in details" :key="project.id" class="ma-4 pa-4">
-        <v-card-text>
-          <div>Last updated: {{getDateOnly(project.updated_at)}}</div>
-          <div v-if="project.license">{{project.license.name}}</div>
-          <p class="title text--primary">{{project.name}}</p>
+      <v-tabs v-model="active_tab">
+        <v-tab
+          v-for="projectType in projects"
+          :key="projectType.type"
+          :href="`#tab-${projectType.type}`"
+        >
+          {{projectType.type}}
+          <v-avatar left class="green darken-4 project-count">{{projectType.repos.length}}</v-avatar>
+        </v-tab>
+        <v-tab-item
+          v-for="projectType in projects"
+          :key="projectType.type"
+          :value="`tab-${projectType.type}`"
+        >
+          <v-card outlined v-for="project in projectType.details" :key="project.id" class="pa-4">
+            <v-card-text>
+              <div>Last updated: {{getDateOnly(project.updated_at)}}</div>
+              <div v-if="project.license">{{project.license.name}}</div>
+              <p class="title text--primary">{{project.name}}</p>
 
-          <div class="text--primary">{{project.description}}</div>
-        </v-card-text>
-        <v-card-subtitle>
-          <v-chip class="separated-chip" color="green" text-color="white">
-            <v-avatar left class="green darken-4">{{project.stargazers_count}}</v-avatar>stars
-          </v-chip>
-          <v-chip class="separated-chip" color="green" text-color="white">
-            <v-avatar left class="green darken-4">{{project.open_issues}}</v-avatar>open issues
-          </v-chip>
-        </v-card-subtitle>
-        <v-card-actions>
-          <v-btn
-            v-if="project.homepage"
-            color="green darken-4"
-            :href="project.homepage"
-            target="_blank"
-          >Home page</v-btn>
-          <v-btn color="green darken-4" :href="project.clone_url" target="_blank">Source code</v-btn>
-        </v-card-actions>
-      </v-card>
+              <div class="text--primary">{{project.description}}</div>
+            </v-card-text>
+            <v-card-subtitle>
+              <v-chip class="separated-chip" color="green" text-color="white">
+                <v-avatar left class="green darken-4">{{project.stargazers_count}}</v-avatar>stars
+              </v-chip>
+              <v-chip class="separated-chip" color="green" text-color="white">
+                <v-avatar left class="green darken-4">{{project.open_issues}}</v-avatar>open issues
+              </v-chip>
+            </v-card-subtitle>
+            <v-card-actions>
+              <v-btn
+                v-if="project.homepage"
+                color="green darken-4"
+                :href="project.homepage"
+                target="_blank"
+              >Home page</v-btn>
+              <v-btn color="green darken-4" :href="project.clone_url" target="_blank">Source code</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
     </v-row>
   </v-container>
 </template>
@@ -36,6 +52,17 @@
   margin-right: 4px;
   margin-bottom: 4px;
 }
+.project-count {
+  height: 24px !important;
+  min-width: 24px !important;
+  width: 24px !important;
+  margin-left: 8px !important;
+  margin-right: 0 !important;
+  color: white !important;
+}
+.v-card {
+  margin-bottom: 8px;
+}
 </style>
 
 <script>
@@ -44,28 +71,46 @@ import Axios from "axios";
 export default {
   data: function() {
     return {
-      projects: [],
-      details: []
+      active_tab: "tab-tools",
+      projects: [
+        {
+          type: "",
+          count: 0,
+          repos: [],
+          details: []
+        }
+      ]
     };
   },
   mounted: function() {
     this.getProjects();
+    this.currentProjectType = this.projects[0];
   },
   methods: {
     getProjects: function() {
       var _this = this;
       Axios.get("/data/projects.json").then(function(response) {
         _this.projects = response.data.projects;
+        _this.projects = _this.projects.filter(function(item) {
+          return item.repos.length > 0;
+        });
         _this.projects.forEach(function(item) {
-          _this.getprojectDetails(item);
+          _this.parseProjectType(item);
         });
       });
     },
-    getprojectDetails: function(projectName) {
+    parseProjectType: function(projectType) {
       var _this = this;
+      // debugger;
+      projectType.repos.forEach(function(repo) {
+        _this.getprojectDetails(repo, projectType);
+      });
+    },
+    getprojectDetails: function(projectName, projectType) {
+      // var _this = this;
       Axios.get("https://api.github.com/repos/huntertran/" + projectName).then(
         function(response) {
-          _this.details.push(response.data);
+          projectType.details.push(response.data);
         }
       );
     },
