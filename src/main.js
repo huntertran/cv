@@ -6,7 +6,7 @@ import vuetify from './plugins/vuetify';
 
 Vue.config.productionTip = false
 
-Axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "/cv/" : "/",
+// Axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "/cv/" : "/",
 
 Vue.prototype.$http = Axios;
 
