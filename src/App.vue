@@ -26,11 +26,11 @@
       </v-avatar>
     </v-app-bar>
 
-    <v-content>
+    <v-main>
       <v-container class="fill-height" fluid>
         <router-view></router-view>
       </v-container>
-    </v-content>
+    </v-main>
 
     <v-footer app>
       <span>hunter.tran &copy; 2019</span>
