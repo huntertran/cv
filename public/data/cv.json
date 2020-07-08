@@ -78,6 +78,12 @@
     ],
     "awards": [
         {
+            "title": "Concordia International Tuition Award of Excellence",
+            "time": "School year 2019 and 2020",
+            "org": "Concordia University",
+            "description": "Tuition scholarship for International Student"
+        },
+        {
             "title": "Microsoft Imagine Cup 2015 - National Winner",
             "time": "Apr 2015",
             "org": "Microsoft",
@@ -104,9 +110,6 @@
                 {
                     "name": "Van Tuan Tran",
                     "avatar": "./avatars/van tuan tran.jpg"
-                },
-                {
-                    "name": "Cheng Cheng"
                 }
             ],
             "org": "Concordia University"
