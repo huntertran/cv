@@ -4,6 +4,8 @@
             "type": "tools",
             "count": 0,
             "repos": [
+                "open-concordia",
+                "corsproxy",
                 "tlightbox",
                 "markdown-toc",
                 "userscripts"
@@ -14,6 +16,9 @@
             "type": "courses",
             "count": 0,
             "repos": [
+                "soen6461-snippets",
+                "udb-converter",
+                "soen6461-plantuml-generator",
                 "soen6441-riskgame"
             ],
             "details": []
