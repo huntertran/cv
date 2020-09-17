@@ -8,7 +8,7 @@
             "from": "2018-07",
             "to": "2019-04",
             "location": "Etown Building, Ho Chi Minh City, Vietnam",
-            "description": "Create data visualization software for a Korean company, using WPF\nWorking on profile matching platform between industrial suppliers and buyers, using a combination of ASP.NET Core 2, Neo4J database and Angular 5 for client-side",
+            "description": "• Team lead, create data visualization software for a Korean company, using WPF and customized Telerik controls.\n• Key member, working on profile matching platform between industrial suppliers and buyers for a UK company, using a combination of ASP.NET Core 2, Neo4J database and Angular 5 for client-side.",
             "avatar": "./logos/nashtech.png"
         },
         {
@@ -17,7 +17,7 @@
             "from": "2018-02",
             "to": "2019-06",
             "location": "Quang Trung Software Park, Ho Chi Minh City, Vietnam",
-            "description": "",
+            "description": "• Human Resource Payroll: built a web application that helps HRs and accountants calculate salary and export payroll for employees with high-security requirements. Developed using ASP.NET Core 2 with Dapper, SQL Server and Visual Studio Code.\n• Redmine: setup and write custom extensions to extend the functionality of the Redmine system. Developed using Ruby on Rail 5, with Ruby 2.4 on Windows.\n• SMS-Employee Performance Appraisal: maintain a web application that manages, evaluates employee performance with custom rules applied monthly and yearly. Developed using ASP.NET MVC and SQL Server.\n• Human Resource Management: maintain a web application that manages employees working hours. Developed using ASP.NET MVC and SQL Server.",
             "avatar": "./logos/nexcel.png"
         },
         {
@@ -26,7 +26,7 @@
             "from": "2014-11",
             "to": "2017-01",
             "location": "Flemington Building, Ho Chi Minh City, Vietnam",
-            "description": "Products:\nZinio Branded Apps for major magazines\nAutomatic Build System for Branded Apps\nZinio SDK for Windows\nZinio Newsstand App",
+            "description": "• Zinio Branded App: A full functionalities white app that can be rebuilt with a set of custom properties to fit with thousands of publishers\n• Zinio SDK for Windows: A SDK that helps publishers build their apps with minimum effort but still have every function of a magazine app on the store (read, download, bookmark, share, purchase, etc.)\n• Automatic Build System for Branded App: A tool that takes source code from Git repo, inject publisher’s properties and build the app.",
             "avatar": "./logos/zinio.png"
         },
         {
@@ -35,7 +35,7 @@
             "from": "2013-04",
             "to": "2014-08",
             "location": "35 Nguyen Thong, District 3, HCMC | Saigon Hightech Park - District 9, HCMC",
-            "description": "Build apps for Nokia and Microsoft",
+            "description": "Develop approximately 12 Windows Phone Apps, 5 Windows Store App for Nokia and Microsoft Vietnam. Analyze and write wrappers to use APIs simply and easily for other developers. Analyze and replicate web requests and responses for non-API services.",
             "avatar": "./logos/microsoft.png"
         },
         {
@@ -44,7 +44,7 @@
             "from": "2010-08",
             "to": "2016-06",
             "location": "Ho Chi Minh City, Vietnam",
-            "description": "Microsoft Student Partner Lead at University of Information Technology\nTalent Management Lead\nChair of Information Technology Innovation Club",
+            "description": "• Talent Management Lead. Manage about 120 members of other Microsoft Student Partners. Recruit new members and manage tasks for the recruitment team.\n• Organize monthly events and team bonding activities. Held workshops and hands-on labs for students at universities. (Sometimes I was the instructor)\n• Write and send newsletters monthly via email and website.\n• Organize and Mentoring for teams in the Microsoft Imagine Cup competition.",
             "avatar": "./logos/microsoft.png"
         }
     ],
@@ -58,7 +58,7 @@
             "avatar": "./logos/concordia.jpg"
         },
         {
-            "name": "Bachelor of Enginnering - BE, Information System, A",
+            "name": "Bachelor of Engineering - BE, Information System, A",
             "title": "University of Information Technology",
             "from": "2010",
             "to": "2015",
