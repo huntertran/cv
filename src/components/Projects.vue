@@ -94,6 +94,7 @@ export default {
         _this.projects = _this.projects.filter(function(item) {
           return item.repos.length > 0;
         });
+        _this.active_tab = "tab-tools";
         _this.projects.forEach(function(item) {
           _this.parseProjectType(item);
         });

@@ -4,11 +4,14 @@
             "type": "tools",
             "count": 0,
             "repos": [
+                "password-generator",
                 "open-concordia",
                 "corsproxy",
                 "tlightbox",
                 "markdown-toc",
-                "userscripts"
+                "udb-converter",
+                "userscripts",
+                "javaswing-multiple-output"
             ],
             "details": []
         },
