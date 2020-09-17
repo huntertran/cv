@@ -16,24 +16,29 @@
 </template>
 
 <script>
-import Axios from "axios";
+// import Axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
-      awards: []
+      awards: [],
     };
   },
-  mounted: function() {
+  mounted: function () {
     this.getCv();
   },
   methods: {
-    getCv: function() {
+    getCv: async function () {
       var _this = this;
-      Axios.get("/data/cv.json").then(function(response) {
-        _this.awards = response.data.awards;
-      });
-    }
-  }
+      let response = await fetch("/data/cv.json");
+      if (response.ok) {
+        let json = await response.json();
+        _this.awards = json.awards;
+      }
+      // Axios.get("/data/cv.json").then(function(response) {
+      //   _this.awards = response.data.awards;
+      // });
+    },
+  },
 };
 </script>

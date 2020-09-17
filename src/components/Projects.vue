@@ -66,10 +66,10 @@
 </style>
 
 <script>
-import Axios from "axios";
+// import Axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
       active_tab: "tab-tools",
       projects: [
@@ -77,48 +77,70 @@ export default {
           type: "",
           count: 0,
           repos: [],
-          details: []
-        }
-      ]
+          details: [],
+        },
+      ],
     };
   },
-  mounted: function() {
+  mounted: function () {
     this.getProjects();
     this.currentProjectType = this.projects[0];
   },
   methods: {
-    getProjects: function() {
+    getProjects: async function () {
       var _this = this;
-      Axios.get("/data/projects.json").then(function(response) {
-        _this.projects = response.data.projects;
-        _this.projects = _this.projects.filter(function(item) {
+      let response = await fetch("/data/projects.json");
+
+      if (response.ok) {
+        let json = await response.json();
+
+        _this.projects = json.projects;
+        _this.projects = _this.projects.filter(function (item) {
           return item.repos.length > 0;
         });
         _this.active_tab = "tab-tools";
-        _this.projects.forEach(function(item) {
+        _this.projects.forEach(function (item) {
           _this.parseProjectType(item);
         });
-      });
+      }
+      // Axios.get("/data/projects.json").then(function(response) {
+      //   _this.projects = response.data.projects;
+      //   _this.projects = _this.projects.filter(function(item) {
+      //     return item.repos.length > 0;
+      //   });
+      //   _this.active_tab = "tab-tools";
+      //   _this.projects.forEach(function(item) {
+      //     _this.parseProjectType(item);
+      //   });
+      // });
     },
-    parseProjectType: function(projectType) {
+    parseProjectType: function (projectType) {
       var _this = this;
       // debugger;
-      projectType.repos.forEach(function(repo) {
+      projectType.repos.forEach(function (repo) {
         _this.getprojectDetails(repo, projectType);
       });
     },
-    getprojectDetails: function(projectName, projectType) {
+    getprojectDetails: async function (projectName, projectType) {
       // var _this = this;
-      Axios.get("https://api.github.com/repos/huntertran/" + projectName).then(
-        function(response) {
-          projectType.details.push(response.data);
-        }
-      );
+      let response = await fetch("https://api.github.com/repos/huntertran/" + projectName);
+
+      if(response.ok) {
+        let json = await response.json();
+
+        projectType.details.push(json);
+      }
+
+      // Axios.get("https://api.github.com/repos/huntertran/" + projectName).then(
+      //   function (response) {
+      //     projectType.details.push(response.data);
+      //   }
+      // );
     },
     getDateOnly(dateString) {
       var date = new Date(dateString);
       return date.toLocaleDateString("en-CA");
-    }
-  }
+    },
+  },
 };
 </script>

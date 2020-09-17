@@ -34,7 +34,7 @@
 </style>
 
 <script>
-import Axios from "axios";
+// import Axios from "axios";
 
 export default {
   data: function() {
@@ -46,11 +46,16 @@ export default {
     this.getCv();
   },
   methods: {
-    getCv: function() {
+    getCv: async function() {
       var _this = this;
-      Axios.get("/data/cv.json").then(function(response) {
-        _this.researches = response.data.researches;
-      });
+      let response = await fetch("/data/cv.json");
+      if (response.ok) {
+        let json = await response.json();
+        _this.researches = json.researches;
+      }
+      // Axios.get("/data/cv.json").then(function(response) {
+      //   _this.researches = response.data.researches;
+      // });
     }
   }
 };
