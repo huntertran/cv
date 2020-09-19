@@ -3,8 +3,8 @@
     "bio": "Studying master of Computer Science at Concordia University",
     "experience": [
         {
-            "title": "Senior Software Engineer",
-            "name": "NashTech Limited",
+            "title": "NashTech Limited",
+            "name": "Senior Software Engineer",
             "from": "2018-07",
             "to": "2019-04",
             "location": "Etown Building, Ho Chi Minh City, Vietnam",
@@ -12,8 +12,8 @@
             "avatar": "./logos/nashtech.png"
         },
         {
-            "title": "Software Engineer",
-            "name": "Nexcel Solutions",
+            "title": "Nexcel Solutions",
+            "name": "Software Engineer",
             "from": "2018-02",
             "to": "2019-06",
             "location": "Quang Trung Software Park, Ho Chi Minh City, Vietnam",
@@ -21,8 +21,8 @@
             "avatar": "./logos/nexcel.png"
         },
         {
-            "title": "Software Engineer",
-            "name": "Zinio",
+            "title": "Zinio LLC",
+            "name": "Software Engineer",
             "from": "2014-11",
             "to": "2017-01",
             "location": "Flemington Building, Ho Chi Minh City, Vietnam",
@@ -30,8 +30,8 @@
             "avatar": "./logos/zinio.png"
         },
         {
-            "title": "Internship",
-            "name": "SHTP - Microsoft Innovation Center",
+            "title": "SHTP - Microsoft Innovation Center",
+            "name": "Internship",
             "from": "2013-04",
             "to": "2014-08",
             "location": "35 Nguyen Thong, District 3, HCMC | Saigon Hightech Park - District 9, HCMC",
@@ -39,8 +39,8 @@
             "avatar": "./logos/microsoft.png"
         },
         {
-            "title": "Microsoft Student Partner",
-            "name": "Microsoft",
+            "title": "Microsoft",
+            "name": "Microsoft Student Partner",
             "from": "2010-08",
             "to": "2016-06",
             "location": "Ho Chi Minh City, Vietnam",
