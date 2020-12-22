@@ -6,8 +6,7 @@
     <v-row v-if="$vuetify.breakpoint.smAndUp" align="stretch">
       <v-col align="stretch">
         <v-timeline  dense>
-          <v-timeline-item v-for="company in data" :key="company.name" right small>
-            <!-- <span slot="opposite">{{company.to}} - {{company.from}}</span> -->
+          <v-timeline-item v-for="company in data" :key="company.title" right small>
             <ExperienceItem :company="company"></ExperienceItem>
           </v-timeline-item>
         </v-timeline>
