@@ -30,7 +30,8 @@
             "type": "researches",
             "count": 0,
             "repos": [
-                "ptidej-wordcloud"
+                "ptidej-wordcloud",
+                "pattern-abiding-api"
             ],
             "details": []
         }
