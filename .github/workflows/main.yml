@@ -31,4 +31,6 @@ jobs:
           cd docs
           find -not -name ".git" -not -name "README.md" -delete
           mv ../build/* ../docs/
-          
+          git add .
+          git commit -a
+          git push
