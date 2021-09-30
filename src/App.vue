@@ -21,8 +21,15 @@
 
       <v-toolbar-title>Van Tuan Tran</v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-switch v-model="$vuetify.theme.dark"
+                align="center"
+                justify="center"
+                inset
+                label="Dark mode"
+      ></v-switch>
+      <v-divider class="mx-4" vertical></v-divider>
       <v-avatar right>
-        <img src="./assets/avatar.jpg" />
+        <img src="/avatars/van tuan tran.jpg" />
       </v-avatar>
     </v-app-bar>
 
@@ -57,7 +64,7 @@ export default {
       {
         name: "cv",
         url: "/cv",
-        icon: "mdi-file-document-box-multiple-outline",
+        icon: "mdi-file-document",
         count: 0,
       },
       {
