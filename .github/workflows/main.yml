@@ -20,7 +20,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          ssh-key: '${{ secrets.DEPLOY_KEY }}'
+          ssh-key: '${{ secrets.ID_RSA_GITHUB_ACTION }}'
           submodules: true
 
       # Runs a set of commands using the runners shell
