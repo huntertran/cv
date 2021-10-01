@@ -22,9 +22,8 @@
       <v-toolbar-title>Van Tuan Tran</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-switch v-model="$vuetify.theme.dark"
-                align="center"
-                justify="center"
                 inset
+                hide-details
                 label="Dark mode"
       ></v-switch>
       <v-divider class="mx-4" vertical></v-divider>
