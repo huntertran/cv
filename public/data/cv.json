@@ -1,6 +1,6 @@
 {
     "name": "Van Tuan Tran",
-    "bio": "Studying master of Computer Science at Concordia University",
+    "bio": "Master in Computer Science at Concordia University",
     "experience": [
         {
             "title": "NashTech Limited",
@@ -52,8 +52,8 @@
         {
             "name": "Master's degree, Computer Science",
             "title": "Concordia University",
-            "from": "2019",
-            "to": "2022",
+            "from": "09-2019",
+            "to": "08-2021",
             "location": "Montreal, Quebec, Canada",
             "avatar": "./logos/concordia.jpg"
         },
@@ -104,15 +104,30 @@
     ],
     "researches": [
         {
-            "title": "Generating World-clouds and find connections between Eclipse IoT Projects",
-            "abstract": "In the past few years, more and more open source IoT projects have been published by developers and enthusiasts. Eclipse environment provides some projects for supporting IoT development. The capability of one project and the relations among different projects are not clear enough for building an IoT application as a beginner of IoT development. We present those projects by generating word clouds and identify their relations by natural language processing techniques. (result) Some relations are verified by implementing some experiments;meanwhile. The accuracy of these word clouds and their relations are verified by the Eclipse Foundation.",
+            "title": "Analyzing and Visualizing Projects and their Relations in Software Ecosystems",
+            "abstract": "More and more software projects are being consolidated into ecosystems to increase their discovery, usability, and usefulness. Some of the most popular ecosystems exist in npmjs, Python Package Indexing, and Apache Maven Repository. It is difficult for developers to relate these projects and use them to their full potential because of their number, the spread and depth of their features, and their intrinsic and accidental complexities. We present a technique---SECO Storms Maker---to capture and present the essential information from projects in an ecosystem to help developers join, use, and contribute to the ecosystem. We generate word-clouds based on the projects' documentation via tokenization and distribution frequency. We identify relations among projects using grammar patterns scanning after part-of-speech tagging. We put these word-clouds into a graph to ease navigation and exploration. We evaluate our technique by manually building a ground truth and comparing a randomly-selected project with SECO to show its benefits.",
             "authors": [
                 {
                     "name": "Van Tuan Tran",
                     "avatar": "./avatars/van tuan tran.jpg"
+                },
+                {
+                    "name": "Cheng Cheng"
+                },
+                {
+                    "name": "Fabio Petrillo",
+                    "avatar": "https://fabiopetrillo.com/authors/admin/avatar_hudaa441594782096891e089cfddcdad50_446620_250x250_fill_q90_lanczos_center.jpg",
+                    "link": "https://fabiopetrillo.com/"
+                },
+                {
+                    "name": "Yann-Gaël Guéhéneuc",
+                    "avatar": "http://www.yann-gael.gueheneuc.net/Work/Info/Files/YannGaelGueheneuc.jpg",
+                    "link": "http://www.yann-gael.gueheneuc.net/"
                 }
             ],
-            "org": "Concordia University"
+            "org": "Concordia University",
+            "link" : "https://doi.org/10.26226/morressier.613b545d842293c031b5b987",
+            "published": "IEEE Working Conference on Software Visualization (VISSOFT 2021)"
         }
     ]
 }

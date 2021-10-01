@@ -5,13 +5,14 @@
         <v-card-text>
           <div>{{research.org}}</div>
           <p class="title text--primary">{{research.title}}</p>
-
+          <div v-if="research.published">Published in {{research.published}}</div>
+          <br/>
           <div class="text--primary">{{research.abstract}}</div>
         </v-card-text>
         <v-card-subtitle>
           <v-chip class="separated-chip" v-for="author in research.authors" :key="author.name" pill>
             <v-avatar v-if="author.avatar" left>
-              <img :src="author.avatar" />
+              <img :src="author.avatar" :alt="author.name"/>
             </v-avatar>
             <v-icon v-else left color="red">mdi-account</v-icon>
             <span>{{author.name}}</span>
@@ -19,7 +20,7 @@
         </v-card-subtitle>
 
         <v-card-actions>
-          <v-btn color="green darken-4">Learn More</v-btn>
+          <v-btn color="green darken-4" :href="research.link" target="_blank">Learn More</v-btn>
         </v-card-actions>
       </v-card>
     </v-row>
