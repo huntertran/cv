@@ -48,7 +48,7 @@
         </v-main>
 
         <v-footer app>
-            <span>hunter.tran &copy; 2019</span>
+            <span>hunter.tran &copy; {{currentYear}}</span>
         </v-footer>
     </v-app>
 </template>
@@ -69,6 +69,7 @@ export default {
     data: () => ({
         drawer: null,
         isDark: false,
+        currentYear: null,
         menus: [
             {
                 name: "cv",
@@ -112,6 +113,8 @@ export default {
         }
 
         this.$vuetify.theme.dark = this.isDark;
+
+        this.currentYear = new Date().getFullYear();
     },
     mounted: function() {
         this.getCount();
