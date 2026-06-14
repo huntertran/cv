@@ -2,38 +2,33 @@
     "projects": [
         {
             "type": "tools",
-            "count": 0,
             "repos": [
+                "property-manager-prod",
+                "mortgage-calc-prod",
+                "canada-greenbutton",
+                "eedraws",
                 "password-generator",
-                "open-concordia",
-                "corsproxy",
-                "tlightbox",
-                "markdown-toc",
-                "udb-converter",
-                "userscripts",
-                "javaswing-multiple-output"
-            ],
-            "details": []
+                "canada-crime-map",
+                "enum-flag-converter",
+                "guid-generator",
+                "seco-storms-maker"
+            ]
         },
         {
             "type": "courses",
-            "count": 0,
             "repos": [
                 "soen6461-snippets",
                 "udb-converter",
                 "soen6461-plantuml-generator",
                 "soen6441-riskgame"
-            ],
-            "details": []
+            ]
         },
         {
             "type": "researches",
-            "count": 0,
             "repos": [
                 "ptidej-wordcloud",
                 "pattern-abiding-api"
-            ],
-            "details": []
+            ]
         }
     ]
 }

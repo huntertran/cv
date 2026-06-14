@@ -116,7 +116,7 @@
                 },
                 {
                     "name": "Fabio Petrillo",
-                    "avatar": "https://fabiopetrillo.com/authors/admin/avatar_hudaa441594782096891e089cfddcdad50_446620_250x250_fill_q90_lanczos_center.jpg",
+                    "avatar": "https://fabiopetrillo.com/authors/admin/avatar_hudaa441594782096891e089cfddcdad50_446620_270x270_fill_q75_lanczos_center.jpg",
                     "link": "https://fabiopetrillo.com/"
                 },
                 {
@@ -127,7 +127,32 @@
             ],
             "org": "Concordia University",
             "link" : "https://doi.org/10.26226/morressier.613b545d842293c031b5b987",
+            "doi": "10.26226/morressier.613b545d842293c031b5b987",
+            "date": "2021-09",
             "published": "IEEE Working Conference on Software Visualization (VISSOFT 2021)"
+        },
+        {
+            "title": "Formalising Solutions to REST API Practices as Design (Anti)Patterns",
+            "abstract": "REST (REpresentational State Transfer) is the de-facto architectural style for designing Web APIs. Developers follow recurring practices when designing REST APIs; good practices are captured as design patterns while poor ones become anti-patterns. However, these (anti)patterns are often described informally in natural language, which makes them ambiguous, hard to compare, and difficult to detect automatically. We formalise a catalogue of REST API design patterns and anti-patterns, giving each a precise, uniform definition in terms of API structure and behaviour. This formalisation clarifies the relationships between related (anti)patterns and provides a foundation for tooling that can automatically detect them and guide developers toward better REST API designs.",
+            "authors": [
+                {
+                    "name": "Van Tuan Tran",
+                    "avatar": "./avatars/van tuan tran.jpg"
+                },
+                {
+                    "name": "Manel Abdellatif"
+                },
+                {
+                    "name": "Yann-Gaël Guéhéneuc",
+                    "avatar": "http://www.yann-gael.gueheneuc.net/Work/Info/Files/YannGaelGueheneuc.jpg",
+                    "link": "http://www.yann-gael.gueheneuc.net/"
+                }
+            ],
+            "org": "Concordia University",
+            "link": "https://link.springer.com/chapter/10.1007/978-3-030-91431-8_10",
+            "doi": "10.1007/978-3-030-91431-8_10",
+            "date": "2021-11",
+            "published": "Int. Conference on Service-Oriented Computing (ICSOC 2021), LNCS 13121"
         }
     ]
 }

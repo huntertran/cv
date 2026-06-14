@@ -1,0 +1,209 @@
+/* ============================================================
+   OPERATOR'S TERMINAL — design system
+   CRT phosphor aesthetic. Space Mono (display) / IBM Plex Mono (body).
+   ============================================================ */
+
+:root {
+  /* dark = CRT phosphor (default) */
+  --bg: #070a08;
+  --bg-grad-1: #0a1310;
+  --bg-grad-2: #060807;
+  --panel: #0a0f0c;
+  --panel-2: #0c130f;
+  --border: #16241b;
+  --border-bright: #253a2c;
+  --fg: #b6c9b9;
+  --fg-dim: #5f7a66;
+  --fg-faint: #36493c;
+  --phosphor: #54f08a;     /* primary green */
+  --phosphor-soft: #54f08a22;
+  --amber: #ffb454;
+  --cyan: #57d7ff;
+  --red: #ff6b5e;
+  --glow: 0 0 8px rgba(84, 240, 138, 0.45);
+  --selection: rgba(84, 240, 138, 0.22);
+  --scanline: rgba(0, 0, 0, 0.28);
+  --radius: 4px;
+  --display: 'Space Mono', ui-monospace, monospace;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Consolas', monospace;
+}
+
+:root[data-theme='light'] {
+  /* light = "daylight terminal" — warm paper, ink-green */
+  --bg: #efe9da;
+  --bg-grad-1: #f4efe2;
+  --bg-grad-2: #e7e0cd;
+  --panel: #f7f2e6;
+  --panel-2: #efe9d8;
+  --border: #d8cfb6;
+  --border-bright: #c4b894;
+  --fg: #2b3a2c;
+  --fg-dim: #6c7a5f;
+  --fg-faint: #a99e7e;
+  --phosphor: #1f7a3d;
+  --phosphor-soft: #1f7a3d18;
+  --amber: #9a5b00;
+  --cyan: #146a86;
+  --red: #b43223;
+  --glow: none;
+  --selection: rgba(31, 122, 61, 0.18);
+  --scanline: rgba(120, 110, 80, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--selection);
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+a:hover {
+  border-bottom-color: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ---------- shared terminal primitives ---------- */
+
+.kw {
+  color: var(--phosphor);
+}
+.amber {
+  color: var(--amber);
+}
+.cyan {
+  color: var(--cyan);
+}
+.dim {
+  color: var(--fg-dim);
+}
+.faint {
+  color: var(--fg-faint);
+}
+.line-break {
+  white-space: pre-wrap;
+}
+
+.glow {
+  text-shadow: var(--glow);
+}
+
+/* a command-output block: "$ cmd" header + body */
+.output {
+  margin: 0 0 38px;
+}
+.cmd-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--display);
+  font-size: 13px;
+  color: var(--fg-dim);
+  margin-bottom: 16px;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 8px;
+}
+.cmd-line::before {
+  content: '$';
+  color: var(--phosphor);
+}
+.cmd-line .arg {
+  color: var(--fg);
+}
+.cmd-line .flag {
+  color: var(--amber);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  position: relative;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-bright);
+  border-radius: 2px;
+  padding: 1px 8px;
+  font-size: 11.5px;
+  color: var(--fg-dim);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border-bright);
+  border-radius: 2px;
+  padding: 5px 12px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--fg);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.14s ease;
+}
+.btn:hover {
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+  box-shadow: var(--glow);
+}
+
+.blink {
+  animation: blink 1.05s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* thin scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-bright) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--border-bright);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}

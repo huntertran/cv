@@ -1,186 +1,159 @@
 <template>
-    <v-container fluid class="fill-height">
-        <v-row class="fill-height" align="start" justify="start">
-            <v-tabs v-model="active_tab">
-                <v-tab
-                    v-for="projectType in projects"
-                    :key="projectType.type"
-                    :href="`#tab-${projectType.type}`"
-                >
-                    {{ projectType.type }}
-                    <v-avatar left class="green darken-4 project-count">{{
-                        projectType.repos.length
-                    }}</v-avatar>
-                </v-tab>
-                <v-tab-item
-                    v-for="projectType in projects"
-                    :key="projectType.type"
-                    :value="`tab-${projectType.type}`"
-                >
-                    <v-card
-                        outlined
-                        v-for="project in projectType.details"
-                        :key="project.id"
-                        class="pa-4"
-                    >
-                        <v-card-text>
-                            <div>
-                                Last updated:
-                                {{ getDateOnly(project.updated_at) }}
-                            </div>
-                            <div v-if="project.license">
-                                {{ project.license.name }}
-                            </div>
-                            <p class="title text--primary">
-                                {{ project.name }}
-                            </p>
+  <section class="output">
+    <div class="cmd-line">
+      <span class="arg">git ls-remote --all</span>
+      <span class="faint">— {{ totalRepos }} repos</span>
+    </div>
 
-                            <div class="text--primary">
-                                {{ project.description }}
-                            </div>
-                        </v-card-text>
-                        <v-card-subtitle>
-                            <v-chip
-                                class="separated-chip"
-                                color="green"
-                                text-color="white"
-                            >
-                                <v-avatar left class="green darken-4">{{
-                                    project.stargazers_count
-                                }}</v-avatar
-                                >stars
-                            </v-chip>
-                            <v-chip
-                                class="separated-chip"
-                                color="green"
-                                text-color="white"
-                            >
-                                <v-avatar left class="green darken-4">{{
-                                    project.open_issues
-                                }}</v-avatar
-                                >open issues
-                            </v-chip>
-                        </v-card-subtitle>
-                        <v-card-actions>
-                            <v-btn
-                                v-if="project.homepage"
-                                depressed
-                                color="primary"
-                                :href="project.homepage"
-                                target="_blank"
-                                >Home page</v-btn
-                            >
-                            <v-btn
-                                depressed
-                                color="primary"
-                                :href="project.clone_url"
-                                target="_blank"
-                                >Source code</v-btn
-                            >
-                        </v-card-actions>
-                    </v-card>
-                </v-tab-item>
-            </v-tabs>
-        </v-row>
-    </v-container>
+    <div class="tabs">
+      <button
+        v-for="p in projects"
+        :key="p.type"
+        class="tab"
+        :class="{ active: activeType === p.type }"
+        @click="activeType = p.type"
+      >
+        <span class="kw">./</span>{{ p.type }} <span class="tab-count">{{ p.repos.length }}</span>
+      </button>
+    </div>
+
+    <div v-if="active" class="grid">
+      <article v-for="repo in active.details" :key="repo.id" class="card repo">
+        <div class="repo-head">
+          <h3 class="repo-name cyan">{{ repo.name }}</h3>
+          <span v-if="repo.language" class="pill">{{ repo.language }}</span>
+        </div>
+        <p class="repo-desc dim">{{ repo.description || 'No description.' }}</p>
+        <div class="repo-stats dim">
+          <span class="kw">★ {{ repo.stargazers_count }}</span>
+          <span>⊙ {{ repo.open_issues }} issues</span>
+          <span v-if="repo.license" class="amber">{{ repo.license.spdx_id || repo.license.name }}</span>
+          <span v-if="repo.updated_at" class="faint">↻ {{ dateOnly(repo.updated_at) }}</span>
+        </div>
+        <div class="repo-actions">
+          <a v-if="repo.homepage" :href="repo.homepage" target="_blank" rel="noopener" class="btn">[ live ]</a>
+          <a :href="repo.html_url || repo.clone_url" target="_blank" rel="noopener" class="btn">[ source → ]</a>
+        </div>
+      </article>
+
+      <p v-if="active.loading" class="status kw">▌ cloning from github…</p>
+      <p v-else-if="!active.details.length" class="status faint">// no repos loaded (github rate limit)</p>
+    </div>
+  </section>
 </template>
 
-<style lang="scss" scoped>
-.separated-chip {
-    margin-right: 4px;
-    margin-bottom: 4px;
+<script setup>
+import { ref, computed, onMounted } from 'vue'
+
+const projects = ref([])
+const activeType = ref('')
+const active = computed(() => projects.value.find((p) => p.type === activeType.value))
+const totalRepos = computed(() => projects.value.reduce((s, p) => s + p.repos.length, 0))
+const dateOnly = (s) => new Date(s).toLocaleDateString('en-CA')
+
+async function loadDetails(group) {
+  group.loading = true
+  await Promise.all(
+    group.repos.map(async (name) => {
+      try {
+        const res = await fetch(`https://api.github.com/repos/huntertran/${name}`)
+        if (res.ok) group.details.push(await res.json())
+      } catch (e) {}
+    })
+  )
+  group.details.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+  group.loading = false
 }
-.project-count {
-    height: 24px !important;
-    min-width: 24px !important;
-    width: 24px !important;
-    margin-left: 8px !important;
-    margin-right: 0 !important;
-    color: white !important;
+
+onMounted(async () => {
+  const res = await fetch('/data/projects.json')
+  if (!res.ok) return
+  const data = await res.json()
+  projects.value = data.projects
+    .filter((p) => p.repos.length > 0)
+    .map((p) => ({ ...p, details: [], loading: false }))
+  if (projects.value.length) {
+    activeType.value = projects.value[0].type
+    projects.value.forEach(loadDetails)
+  }
+})
+</script>
+
+<style scoped>
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
-.v-card {
-    margin-bottom: 8px;
+.tab {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--fg-dim);
+  font-family: var(--display);
+  font-size: 13px;
+  padding: 8px 14px;
+  cursor: pointer;
+  margin-bottom: -1px;
+}
+.tab:hover {
+  color: var(--fg);
+}
+.tab.active {
+  color: var(--phosphor);
+  border-bottom-color: var(--phosphor);
+  text-shadow: var(--glow);
+}
+.tab-count {
+  color: var(--fg-faint);
+  font-size: 11px;
+  margin-left: 4px;
+  font-family: var(--mono);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+.repo {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.repo:hover {
+  border-color: var(--border-bright);
+}
+.repo-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.repo-name {
+  font-family: var(--display);
+  font-size: 14px;
+}
+.repo-desc {
+  font-size: 12.5px;
+  margin: 0;
+  flex: 1;
+}
+.repo-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+}
+.repo-actions {
+  display: flex;
+  gap: 8px;
+}
+.status {
+  grid-column: 1 / -1;
+  font-size: 13px;
 }
 </style>
-
-<script>
-// import Axios from "axios";
-
-export default {
-    data: function() {
-        return {
-            active_tab: "tab-tools",
-            projects: [
-                {
-                    type: "",
-                    count: 0,
-                    repos: [],
-                    details: [],
-                },
-            ],
-        };
-    },
-    mounted: function() {
-        this.getProjects();
-        this.currentProjectType = this.projects[0];
-    },
-    methods: {
-        getProjects: async function() {
-            var _this = this;
-            let response = await fetch("/data/projects.json");
-
-            if (response.ok) {
-                let json = await response.json();
-
-                _this.projects = json.projects;
-                _this.projects = _this.projects.filter(function(item) {
-                    return item.repos.length > 0;
-                });
-                _this.active_tab = "tab-tools";
-                _this.projects.forEach(function(item) {
-                    _this.parseProjectType(item);
-                });
-            }
-            // Axios.get("/data/projects.json").then(function(response) {
-            //   _this.projects = response.data.projects;
-            //   _this.projects = _this.projects.filter(function(item) {
-            //     return item.repos.length > 0;
-            //   });
-            //   _this.active_tab = "tab-tools";
-            //   _this.projects.forEach(function(item) {
-            //     _this.parseProjectType(item);
-            //   });
-            // });
-        },
-        parseProjectType: function(projectType) {
-            var _this = this;
-            // debugger;
-            projectType.repos.forEach(function(repo) {
-                _this.getprojectDetails(repo, projectType);
-            });
-        },
-        getprojectDetails: async function(projectName, projectType) {
-            // var _this = this;
-            let response = await fetch(
-                "https://api.github.com/repos/huntertran/" + projectName
-            );
-
-            if (response.ok) {
-                let json = await response.json();
-
-                projectType.details.push(json);
-            }
-
-            // Axios.get("https://api.github.com/repos/huntertran/" + projectName).then(
-            //   function (response) {
-            //     projectType.details.push(response.data);
-            //   }
-            // );
-        },
-        getDateOnly(dateString) {
-            var date = new Date(dateString);
-            return date.toLocaleDateString("en-CA");
-        },
-    },
-};
-</script>
